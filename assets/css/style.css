@@ -40,3 +40,7 @@ body, html {
     line-height: 1.6;
     width: 100%;
 }
+
+#submitQuizButton {
+    font-family: 'Monoton', cursive;
+}
