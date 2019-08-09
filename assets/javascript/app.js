@@ -25,9 +25,7 @@ $("#startQuizButton").on("click", function () {
 
     }
 
-})
-
-
+});
 
 //Trivia Questins, Answers, and Correct Answers//
 var triviaQuestions = [
@@ -82,7 +80,7 @@ var triviaQuestions = [
         correctAnswer: "Seinfeld"
     },
 ];
-//Countdown function that callsback the triviaGame.done function, when timer reaches 0//
+//Countdown function that callsback the gameCountdown function, when timer reaches 0//
 var triviaGame ={
     correct: 0,
     incorrect: 0,
@@ -184,16 +182,17 @@ $.each($("input[name='question-9']:checked"), function () {
 submitQuiz();
 
 function submitQuiz () {
-
-    clearInterval(timer);
+    $("#submitQuizButton").on("click", function (event){
+    clearInterval("#timer");
     $("#quizQuestions").remove();
 
-    ("#quizQuestions").html("<h2>Out of Time!</h2>");
-    ("#quizQuestions").append("<h3>Guessed Correctly: " + this.correct + "</h3>");
-    ("#quizQuestions").append("<h3>Horribly Guessed: " + this.incorrect + "</h3>");
-    ("#quizQuestions").append("<h3>Didn't Try At All: " + (triviaQuestions.length - (this.incorrect + this.correct)) +"</h3>");
-}
-
-$("#submitQuizButton").on("click", function (event) {
-    // event.preventDefault();
+    ("#quizResults").html("<h2>Out of Time!</h2>");
+    ("#quizResults").append("<h3>Guessed Correctly: " + this.correct + "</h3>");
+    ("#quizResults").append("<h3>Horribly Guessed: " + this.incorrect + "</h3>");
+    ("#quizResults").append("<h3>Didn't Try At All: " + (triviaQuestions.length - (this.incorrect + this.correct)) +"</h3>");
 });
+};
+// 
+// $("#submitQuizButton").on("click", function (event) {
+    // event.preventDefault();
+
